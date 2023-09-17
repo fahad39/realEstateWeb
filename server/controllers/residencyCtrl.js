@@ -10,7 +10,7 @@ export const createResidency=asyncHandler(async(req,res)=>{
         address,
         country,
         city,
-        facility,
+        facilities,
         image,
         userEmail
     }=req.body.data
@@ -24,12 +24,15 @@ export const createResidency=asyncHandler(async(req,res)=>{
                 address,
                 country,
                 city,
-                facility,
+                facilities,
                 image,
-                userowner:{connect:{email:userEmail}}
+                owner:{connect:{email:userEmail}}
             }
         })
-        
+        res.send({
+            message:"Residency created Successfully",
+            residency
+        })
         console.log("Residency End Point created")
     } catch (error) {
         if(error.code=== "P2002"){

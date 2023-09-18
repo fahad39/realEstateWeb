@@ -60,3 +60,33 @@ export const getAllBookedVisits=asyncHandler(async(req,res)=>{
         
     }
 })
+
+// Function to cancel the booking
+
+export const cancelBooking=asyncHandler(async(req,res)=>{
+    const {email}=req.body;
+    const {id}=req.params;
+    try {
+        const user=await prisma.user.findUnique({
+            where:{email},
+            select:{bookedVistis:true}
+        })
+
+        const index=user.bookedVistis.findIndex((visit)=>visit.id===id)
+        if(index===-1){
+            res.send(404).json({message:"booking Not Found"})
+        }else{
+            user.bookedVistis.splice(index,1)
+            await prisma.user.update({
+                where:{email},
+                data:{
+                    bookedVistis:user.bookedVistis
+                }
+            })
+            res.send("Booking Cancelled Successfully")
+        }
+    } catch (error) {
+        throw new Error(error.message)
+        
+    }
+})

@@ -1,8 +1,8 @@
 import React from "react";
 import "./Hero.css";
-import { HiLocationMarker } from "react-icons/hi";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
+import SearchBar from "../searchBar/SearchBar";
 
 const Hero = () => {
   return (
@@ -29,15 +29,10 @@ const Hero = () => {
               Find a variety of properties that suit you very easily
             </span>
             <span className="secondaryText">
-              forget all difficulties in finding a residence for you
+              Forget all difficulties in finding a residence for you
             </span>
           </div>
-          <div className="flexCenter search-bar">
-            <HiLocationMarker color="var(--blue)" size={25} />
-            <input type="text" />
-            <button className="button">Search</button>
-          </div>
-
+          <SearchBar />
           <div className="flexCenter stats">
             <div className="flexColCenter stat">
               <span>

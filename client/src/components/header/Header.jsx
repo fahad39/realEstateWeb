@@ -3,6 +3,8 @@ import "./Header.css";
 
 import { BiMenuAltRight } from "react-icons/bi";
 import OutsideClickHandler from "react-outside-click-handler";
+import { ROUTE } from "../../common/Routes";
+import { Link, NavLink } from "react-router-dom";
 
 const getMenuStyles = (menuOpened) => {
   if (document.documentElement.clientWidth <= 800) {
@@ -15,20 +17,18 @@ const Header = () => {
   return (
     <section className="h-wrapper">
       <div className="flexCenter paddings inner-width h-container">
-        <img src="./img/logo.png" alt="logo" width={100} />
+        <Link to={ROUTE.home}>
+          <img src="./img/logo.png" alt="logo" width={100} />
+        </Link>
         <OutsideClickHandler
           onOutsideClick={() => {
             setMenuOpened(false);
           }}
         >
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpened)}>
-            <a href="">Residencies</a>
-            <a href="">Our Values</a>
-            <a href="">Contact Us</a>
-            <a href="">Get Started</a>
-            <button className="button">
-              <a href="">Contact</a>
-            </button>
+            <NavLink to={ROUTE.property}>Properties</NavLink>
+            <a href="mailto:fahadhussain0127@gmail.com">Contact</a>
+            <button className="button">Login</button>
           </div>
         </OutsideClickHandler>
         <div

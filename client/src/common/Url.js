@@ -1,3 +1,4 @@
 export const URL={
-    getAllProperties:"/residency/allresidencies"
+    getAllProperties:"/residency/allresidencies",
+    getProperty:"/residency/"
 }

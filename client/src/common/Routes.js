@@ -1,4 +1,5 @@
 export const ROUTE={
     home:"/",
-    property:"/properties"
+    property:"/properties",
+    propertyid:":propertyId"
 }

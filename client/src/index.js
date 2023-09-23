@@ -12,10 +12,10 @@ root.render(
      domain={process.env.REACT_APP_AUTH_DOMAIN}
      clientId={process.env.REACT_APP_CLIENT_ID}
      authorizationParams={{
-      redirect_uri:"http://localhost:3000/",
-      audience:"http://localhost:8000",
-      scope:"openid profile email"
-     }}
+      redirect_uri:"http://localhost:3000",
+    }}
+    audience="http://localhost:8000"
+    scope="openid profile email"
     >
       <App />
     </Auth0Provider>

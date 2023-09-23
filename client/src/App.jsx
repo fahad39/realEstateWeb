@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import "./App.css";
 import Website from "./pages/Website";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -10,27 +10,35 @@ import { ToastContainer } from "react-toastify";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "react-toastify/dist/ReactToastify.css";
 import Property from "./pages/property/property";
+import UserDetailContext from "./context/userDetailcontext";
 
 function App() {
   const queryClient = new QueryClient();
+  const [userDetails, setUserDetails] = useState({
+    favourites: [],
+    bookings: [],
+    token: null,
+  });
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path={ROUTE.home} element={<Website />} />
-              <Route path={ROUTE.property}>
-                <Route index element={<Properties />} />
-                <Route path={ROUTE.propertyid} element={<Property />} />
+    <UserDetailContext.Provider value={{ userDetails, setUserDetails }}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route element={<Layout />}>
+                <Route path={ROUTE.home} element={<Website />} />
+                <Route path={ROUTE.property}>
+                  <Route index element={<Properties />} />
+                  <Route path={ROUTE.propertyid} element={<Property />} />
+                </Route>
               </Route>
-            </Route>
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-      <ToastContainer />
-      <ReactQueryDevtools initalIsOpen={false} />
-    </QueryClientProvider>
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+        <ToastContainer />
+        <ReactQueryDevtools initalIsOpen={false} />
+      </QueryClientProvider>
+    </UserDetailContext.Provider>
   );
 }
 

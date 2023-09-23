@@ -6,6 +6,7 @@ import OutsideClickHandler from "react-outside-click-handler";
 import { ROUTE } from "../../common/Routes";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import ProfileMenu from "../profileMenu/ProfileMenu";
 
 const getMenuStyles = (menuOpened) => {
   if (document.documentElement.clientWidth <= 800) {
@@ -15,7 +16,7 @@ const getMenuStyles = (menuOpened) => {
 
 const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
   return (
     <section className="h-wrapper">
       <div className="flexCenter paddings inner-width h-container">
@@ -30,9 +31,13 @@ const Header = () => {
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpened)}>
             <NavLink to={ROUTE.property}>Properties</NavLink>
             <a href="mailto:fahadhussain0127@gmail.com">Contact</a>
-            <button className="button" onClick={loginWithRedirect}>
-              Login
-            </button>
+            {isAuthenticated ? (
+              <ProfileMenu user={user} logout={logout} />
+            ) : (
+              <button className="button" onClick={loginWithRedirect}>
+                Login
+              </button>
+            )}
           </div>
         </OutsideClickHandler>
         <div

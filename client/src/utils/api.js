@@ -45,9 +45,13 @@ export const getProperty=async(id)=>{
     }
 }
 
-export const createUser=async(email)=>{
+export const createUser=async(email,token)=>{
     try {
-        const response=await api.post(URL.registerUser,{email})
+        const response=await api.post(URL.registerUser,{email},{
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
         
     } catch (error) {
         toast.error("Something went wrong. Please try again")

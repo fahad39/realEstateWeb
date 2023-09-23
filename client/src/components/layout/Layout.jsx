@@ -13,7 +13,7 @@ const Layout = () => {
 
   const { mutate } = useMutation({
     mutationKey: [user?.email],
-    mutationFn: () => createUser(user?.email),
+    mutationFn: (token) => createUser(user?.email, token),
   });
 
   useEffect(() => {
@@ -24,10 +24,11 @@ const Layout = () => {
           scope: "openid profile email",
         },
       });
-      console.log(res);
       localStorage.setItem("access_token", res);
       setUserDetails((prev) => ({ ...prev, token: res }));
+      mutate(res);
     };
+
     isAuthenticated && getTokenAndRegister();
   }, [isAuthenticated]);
 

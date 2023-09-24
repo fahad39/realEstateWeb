@@ -59,3 +59,22 @@ export const createUser=async(email,token)=>{
         
     }
 }
+
+export const bookVisit=async(date,propertyId,email,token)=>{
+    try {
+        await api.post(`${URL.bookVisits}/${propertyId}`,{
+            email,
+            id:propertyId,
+            date:dayjs(date).format("DD/MM/YYYY")
+        },{
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
+        
+    } catch (error) {
+         toast.error("Something went wrong. Please try again")
+        throw new Error(error)
+    }
+
+}

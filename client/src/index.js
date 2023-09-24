@@ -5,15 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Auth0Provider} from "@auth0/auth0-react"
 import { MantineProvider,createTheme } from '@mantine/core';
-
+import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // Your theme configuration is merged with default theme
-const theme = createTheme({
-  "z-index":100
-});
+
 root.render(
   <React.StrictMode>
-    <MantineProvider theme={theme}>
       <Auth0Provider
         domain={process.env.REACT_APP_AUTH_DOMAIN}
         clientId={process.env.REACT_APP_CLIENT_ID}
@@ -23,9 +21,11 @@ root.render(
         audience="http://localhost:8000"
         scope="openid profile email"
       >
-        <App />
+        <MantineProvider>
+
+          <App />
+        </MantineProvider>
       </Auth0Provider>
-    </MantineProvider>
   </React.StrictMode>
 );
 

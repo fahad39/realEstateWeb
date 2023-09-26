@@ -20,7 +20,7 @@ const BookingModal = ({ opened, setOpened, email, propertyId }) => {
     });
     setUserDetails((prev) => ({
       ...prev,
-      booking: [
+      bookings: [
         ...prev.bookings,
         {
           id: propertyId,

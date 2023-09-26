@@ -5,5 +5,6 @@ export const URL={
     bookVisits:"/user/bookVisit",
     cancelBooking:"/user/removeBooking",
     AddfavAPI:"/user/toFav",
-    allFav:"/user/allFav"
+    allFav:"/user/allFav",
+    allBookings:"/user/allBookings"
 }

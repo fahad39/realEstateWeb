@@ -3,5 +3,6 @@ export const URL={
     getProperty:"/residency/",
     registerUser:"/user/register",
     bookVisits:"/user/bookVisit",
-    cancelBooking:"/user/removeBooking"
+    cancelBooking:"/user/removeBooking",
+    favAPI:"/user/toFav"
 }

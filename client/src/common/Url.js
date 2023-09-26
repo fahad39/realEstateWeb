@@ -4,5 +4,6 @@ export const URL={
     registerUser:"/user/register",
     bookVisits:"/user/bookVisit",
     cancelBooking:"/user/removeBooking",
-    favAPI:"/user/toFav"
+    AddfavAPI:"/user/toFav",
+    allFav:"/user/allFav"
 }

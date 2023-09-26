@@ -101,7 +101,7 @@ export const removeBooking=async(id,email,token)=>{
 
 export const toFav=async(id,email,token)=>{
     try {
-        await api.post(`${URL.favAPI}/${id}`,{
+        await api.post(`${URL.AddfavAPI}/${id}`,{
             email
         },{
             headers:{
@@ -109,6 +109,23 @@ export const toFav=async(id,email,token)=>{
             }
         })
     } catch (error) {
+        throw error
+        
+    }
+}
+
+export const getAllFav=async(email,token)=>{
+    try {
+        const res=await api.post(URL.allFav,{
+            email
+        },{
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
+        return res.data["favResidencesId"]
+    } catch (error) {
+        toast.error("Something went wrong while fetching favourite properties")
         throw error
         
     }

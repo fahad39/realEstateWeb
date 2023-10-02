@@ -3,7 +3,6 @@ import asyncHandler from "express-async-handler"
 import {prisma} from "../config/prismaConfig.js"
 
 export const createUser=asyncHandler(async(req,res)=>{
-    console.log("creating a user")
     let {email}=req.body
     const userExist=await prisma.user.findUnique({where:{email:email}})
     if(!userExist){
@@ -101,12 +100,12 @@ export const favResidency=asyncHandler(async(req,res)=>{
             where:{email}
         })
 
-        if(user.favResidencesId.includes(rid)){
+        if(user.favResidencesID.includes(rid)){
             const updateUser=await prisma.user.update({
                 where:{email},
                 data:{
-                    favResidencesId:{
-                        set:user.favResidencesId.filter((id)=>id!==rid)
+                    favResidencesID:{
+                        set:user.favResidencesID.filter((id)=>id!==rid)
                     }
                 }
             })
@@ -115,7 +114,7 @@ export const favResidency=asyncHandler(async(req,res)=>{
             const updateUser=await prisma.user.update({
                 where:{email},
                 data:{
-                    favResidencesId:{
+                    favResidencesID:{
                         push:rid
                     }
                 }

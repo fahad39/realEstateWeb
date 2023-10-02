@@ -1,11 +1,11 @@
 import React from "react";
 import { useForm } from "@mantine/form";
 import { validateString } from "../../utils/common";
-import { Select, TextInput } from "@mantine/core";
+import { Button, Group, Select, TextInput } from "@mantine/core";
 import useCountries from "../../hooks/useCountries";
 import Map from "../map/Map";
 
-const AddLoc = ({ propertyDetails, setPropertyDetails }) => {
+const AddLoc = ({ propertyDetails, setPropertyDetails, nextStep }) => {
   const form = useForm({
     initialValues: {
       country: propertyDetails?.country,
@@ -20,12 +20,31 @@ const AddLoc = ({ propertyDetails, setPropertyDetails }) => {
   });
   const { country, city, address } = form.values;
   const { getAll } = useCountries();
+  const handleSubmit = () => {
+    const { hasErrors } = form.validate();
+    if (!hasErrors) {
+      setPropertyDetails((prev) => ({ ...prev, city, address, country }));
+      nextStep();
+    }
+  };
   return (
-    <form>
-      {/* left side */}
-      <div className="flexCenter">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+    >
+      <div
+        className="flexCenter"
+        style={{
+          gap: "3rem",
+          marginTop: "3rem",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* left side */}
         {/* input */}
-        <div className="flexColStart">
+        <div className="flexColStart" style={{ flex: 1, gap: "1rem" }}>
           <Select
             w={"100%"}
             withAsterisk
@@ -48,11 +67,14 @@ const AddLoc = ({ propertyDetails, setPropertyDetails }) => {
             {...form.getInputProps("address", { type: "input" })}
           />
         </div>
+        {/* right side */}
+        <div style={{ flex: 1 }}>
+          <Map address={address} city={city} country={country} />
+        </div>
       </div>
-      {/* right side */}
-      <div>
-        <Map address={address} city={city} country={country} />
-      </div>
+      <Group position="center" mt={"xl"}>
+        <Button type="submit">Next Step</Button>
+      </Group>
     </form>
   );
 };

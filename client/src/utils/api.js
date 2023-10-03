@@ -3,8 +3,10 @@ import dayjs from "dayjs"
 import {toast} from "react-toastify"
 import { URL } from "../common/Url"
 
+
+// Development URL  http://localhost:8000/api
 export const api=axios.create({
-    baseURL:"http://localhost:8000/api"
+    baseURL:"https://realestatebackend-zum4.onrender.com"
 })
 
 export const getAllProperties=async()=>{

@@ -10,13 +10,15 @@ import '@mantine/dates/styles.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // Your theme configuration is merged with default theme
 
+// Development redirect URI:  http://localhost:3000
+
 root.render(
   <React.StrictMode>
       <Auth0Provider
         domain={process.env.REACT_APP_AUTH_DOMAIN}
         clientId={process.env.REACT_APP_CLIENT_ID}
         authorizationParams={{
-          redirect_uri:"http://localhost:3000",
+          redirect_uri:"https://realestatebackend-zum4.onrender.com",
         }}
         audience="http://localhost:8000"
         scope="openid profile email"

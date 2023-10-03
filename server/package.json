@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "build": "npm i"
+    "build": "npm i",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.3.1",

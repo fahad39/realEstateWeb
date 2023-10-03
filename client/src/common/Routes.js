@@ -1,5 +1,6 @@
 export const ROUTE={
     home:"/",
     property:"/properties",
-    propertyid:":propertyId"
+    propertyid:":propertyId",
+    booking:"/bookings"
 }

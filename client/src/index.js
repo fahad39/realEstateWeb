@@ -18,7 +18,7 @@ root.render(
         domain={process.env.REACT_APP_AUTH_DOMAIN}
         clientId={process.env.REACT_APP_CLIENT_ID}
         authorizationParams={{
-          redirect_uri:"https://real-estate-web-alpha.vercel.app/",
+          redirect_uri:"https://real-estate-web-alpha.vercel.app",
         }}
         audience="http://localhost:8000"
         scope="openid profile email"

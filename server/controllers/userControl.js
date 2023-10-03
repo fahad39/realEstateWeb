@@ -139,7 +139,7 @@ export const getAllFavorites=asyncHandler(async(req,res)=>{
         })
         res.status(200).send(favResidency)
     } catch (error) {
-        throw new Error(error,message)
+        throw new Error(error.message)
         
     }
 })

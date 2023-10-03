@@ -6,5 +6,6 @@ export const URL={
     cancelBooking:"/user/removeBooking",
     AddfavAPI:"/user/toFav",
     allFav:"/user/allFav",
-    allBookings:"/user/allBookings"
+    allBookings:"/user/allBookings",
+    createResidency:"/residency/create"
 }

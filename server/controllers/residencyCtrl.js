@@ -16,7 +16,6 @@ export const createResidency=asyncHandler(async(req,res)=>{
         image,
         userEmail
     }=req.body.data
-    console.log(req.body.data)
     try {
         const residency=await prisma.residency.create({
             data:{
@@ -35,7 +34,6 @@ export const createResidency=asyncHandler(async(req,res)=>{
             message:"Residency created Successfully",
             residency
         })
-        console.log("Residency End Point created")
     } catch (error) {
         if(error.code=== "P2002"){
             throw new Error("A Residency with address already there")

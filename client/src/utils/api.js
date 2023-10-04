@@ -6,7 +6,7 @@ import { URL } from "../common/Url"
 
 // Development URL  http://localhost:8000/api
 export const api=axios.create({
-    baseURL:"https://real-estate-web-alpha.vercel.app/api"
+    baseURL:"https://real-estate-web-backend-3frc.vercel.app/api"
 })
 
 export const getAllProperties=async()=>{

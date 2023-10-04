@@ -18,7 +18,10 @@ const GeoCoderMarker = ({ address }) => {
   const [position, setPosition] = useState([60, 19]);
 
   useEffect(() => {
-    ELG.geocode({ token: process.env.REACT_APP_GEO_API_KEY })
+    ELG.geocode({
+      token:
+        "AAPK4a530b7b57024a458e04b48c7bdeb9f2luf8ZA3Yc11uGpqO7LPKgXVBBpjQtejjFgMLRx_MBF3qtN1z5Na0C",
+    })
       .text(address)
       .run((err, results, response) => {
         if (results?.results?.length > 0) {

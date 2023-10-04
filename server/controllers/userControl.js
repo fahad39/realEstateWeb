@@ -135,7 +135,7 @@ export const getAllFavorites=asyncHandler(async(req,res)=>{
     try {
         const favResidency=await prisma.user.findUnique({
             where:{email},
-            select:{favResidencesId:true}
+            select:{favResidencesID:true}
         })
         res.status(200).send(favResidency)
     } catch (error) {

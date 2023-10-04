@@ -69,6 +69,12 @@ Then open a second terminal and navigate to project directory
   npm run or yarn start
 ```
 
+## Tech Stack
+
+**Client:** React, Hooks, Context, TanStack Query, Axios
+
+**Server:** Node, Express, Prisma, MongoDB
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or create an issue if you encounter a bug or have a feature request.

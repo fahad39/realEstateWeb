@@ -117,6 +117,7 @@ export const toFav=async(id,email,token)=>{
 }
 
 export const getAllFav=async(email,token)=>{
+    if(!token) return
     try {
         const res=await api.post(URL.allFav,{
             email

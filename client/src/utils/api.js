@@ -126,7 +126,7 @@ export const getAllFav=async(email,token)=>{
                 Authorization:`Bearer ${token}`
             }
         })
-        return res.data["favResidencesId"]
+        return res.data["favResidencesID"]
     } catch (error) {
         toast.error("Something went wrong while fetching favourite properties")
         throw error

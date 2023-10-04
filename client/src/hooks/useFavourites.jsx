@@ -14,7 +14,6 @@ const useFavourites = () => {
     queryKey: "allFavourites",
     queryFn: () => getAllFav(user?.email, userDetails?.token),
     onSuccess: (data) => {
-      console.log("in set fav", data);
       setUserDetails((prev) => ({ ...prev, favourites: data }));
     },
     enabled: user !== undefined,

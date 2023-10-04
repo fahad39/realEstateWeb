@@ -38,8 +38,8 @@ const Favourites = () => {
         <SearchBar filter={filter} setFilter={setFilter} />
         <div className="paddings flexCenter properties">
           {data
-            .filter((property) => favourites.includes(property.id))
-            .filter(
+            ?.filter((property) => favourites?.includes(property.id))
+            ?.filter(
               (property) =>
                 property.title.toLowerCase().includes(filter.toLowerCase()) ||
                 property.city.toLowerCase().includes(filter.toLowerCase()) ||

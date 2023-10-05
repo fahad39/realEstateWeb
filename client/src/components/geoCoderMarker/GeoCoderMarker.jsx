@@ -20,7 +20,7 @@ const GeoCoderMarker = ({ address }) => {
   useEffect(() => {
     ELG.geocode({
       token:
-        "AAPK4a530b7b57024a458e04b48c7bdeb9f2luf8ZA3Yc11uGpqO7LPKgXVBBpjQtejjFgMLRx_MBF3qtN1z5Na0C",
+        "AAPK4a530b7b57024a458e04b48c7bdeb9f2luf8ZA3Yc11uGpqO7LPKgXVBBpjQtejjFgMLRx_MBF3qtN1z5Na0C-SCPQqii7L1",
     })
       .text(address)
       .run((err, results, response) => {

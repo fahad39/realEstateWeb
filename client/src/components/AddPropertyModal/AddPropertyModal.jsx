@@ -9,6 +9,7 @@ import Facilities from "../facilities/Facilities";
 const AddPropertyModal = ({ opened, setOpened }) => {
   const [active, setActive] = useState(0);
   const { user } = useAuth0();
+  console.log("user is", user);
   const [propertyDetails, setPropertyDetails] = useState({
     title: "",
     description: "",

@@ -1,5 +1,5 @@
-import { Container, Modal, Stepper, Button, Group } from "@mantine/core";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Container, Modal, Stepper } from "@mantine/core";
 import AddLoc from "../AddLoc/AddLoc";
 import { useAuth0 } from "@auth0/auth0-react";
 import UploadImage from "../UploadImage/UploadImage";
@@ -24,14 +24,20 @@ const AddPropertyModal = ({ opened, setOpened }) => {
     },
     userEmail: user?.email,
   });
-  console.log("user details", user);
+
   console.log("property details", propertyDetails);
+  console.log("user detail", user);
   const nextStep = () => {
     setActive((current) => (current < 4 ? current + 1 : current));
   };
   const prevStep = () => {
     setActive((current) => (current > 0 ? current - 1 : current));
   };
+
+  useEffect(() => {
+    setPropertyDetails((prev) => ({ ...prev, userEmail: user?.email }));
+  }, [user]);
+
   return (
     <Modal
       opened={opened}

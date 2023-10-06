@@ -29,8 +29,8 @@ const Facilities = ({
   });
   const { bedrooms, parkings, bathrooms } = form.values;
   const handleSubmit = () => {
-    console.log("handle submit");
     const { hasErrors } = form.validate();
+    console.log("ab", { bedrooms, parkings, bathrooms });
     if (!hasErrors) {
       setPropertyDetails((prev) => ({
         ...prev,

@@ -30,11 +30,10 @@ const Facilities = ({
   const { bedrooms, parkings, bathrooms } = form.values;
   const handleSubmit = () => {
     const { hasErrors } = form.validate();
-    console.log("ab", { bedrooms, parkings, bathrooms });
     if (!hasErrors) {
       setPropertyDetails((prev) => ({
         ...prev,
-        Facilities: { bedrooms, parkings, bathrooms },
+        facilities: { bedrooms, parkings, bathrooms },
       }));
       mutate();
     }
@@ -51,7 +50,7 @@ const Facilities = ({
       createResidency(
         {
           ...propertyDetails,
-          Facilities: { bedrooms, parkings, bathrooms },
+          facilities: { bedrooms, parkings, bathrooms },
         },
         token
       ),
